@@ -1,0 +1,373 @@
+﻿==============================================================
+  LUIGI - COMO PROGRAMAR
+  A linguagem simples em portugues, parecida com Java
+==============================================================
+
+
+1. COMO RODAR
+--------------
+- Escreva seu programa no Notepad++ (ou no "Luigi editor.html")
+  e salve com a extensao  .luigi   (exemplo: jogo.luigi)
+- De dois cliques no arquivo .luigi: ele abre em tela cheia,
+  so com fundo branco, e o codigo roda sozinho.
+- Para fechar a tela cheia: Alt+F4
+- Se der erro no codigo, a tela mostra o erro em vermelho
+  com o numero da linha.
+- Dica: salve sempre em UTF-8 (o padrao do Notepad++).
+
+
+2. A REGRA DE OURO
+-------------------
+Toda linha tem a forma:
+
+    /comando/ argumentos /
+
+Comeca com / , o nome do comando, outra / , os argumentos,
+e termina com / .
+
+    /criar/ "Ola, mundo!" /
+
+Blocos (se, enquanto, funcao...) sao fechados com:
+
+    /fim/ /
+
+Comentarios comecam com // (a linha inteira e ignorada):
+
+    // isto e um comentario
+
+Pode usar espacos e recuos (tab) a vontade para organizar.
+
+
+3. VARIAVEIS
+-------------
+Criar ou mudar uma variavel:
+
+    /var/ nome = "Mario" /
+    /var/ vida = 10 /
+    /var/ vivo = verdadeiro /
+    /var/ lista = [1, 2, 3] /
+    /var/ amigo = {nome: "Luigi", idade: 25} /
+
+Mudar com conta:
+
+    /var/ vida += 5 /          (soma 5)
+    /var/ vida -= 2 /          (tira 2)
+    /var/ vida *= 2 /          (multiplica)
+
+Valores:
+    numeros:   10   3.5   -2
+    texto:     "entre aspas"
+    logico:    verdadeiro   falso
+    vazio:     nulo
+
+Contas:  +  -  *  /  %  (% e o resto da divisao)
+Texto junta com +:   "Oi, " + nome
+
+Listas e objetos:
+    lista[0]            primeiro item (a contagem comeca em 0)
+    /var/ lista[1] = 9 /         muda o segundo item
+    amigo.nome                   campo de um objeto
+    /var/ amigo.idade = 26 /
+
+ATENCAO: nao use como nome de variavel as palavras:
+    e   ou   nao   verdadeiro   falso   nulo
+
+
+4. MOSTRAR E LER TEXTO
+-----------------------
+    /criar/ "Ola" /                     escreve na tela (canto superior)
+    /criar/ "Vida:", vida /             pode misturar varias coisas
+    /limpartexto/ /                     apaga os textos escritos
+
+    /ler/ nome /                        abre uma caixinha e guarda o que
+                                        a pessoa digitar em "nome"
+    /ler/ nome, "Qual e o seu nome?" /  com pergunta
+
+
+5. CONDICOES (SE)
+------------------
+    /se/ vida > 5 /
+        /criar/ "Forte" /
+    /senaose/ vida > 0 /
+        /criar/ "Fraco" /
+    /senao/ /
+        /criar/ "Morto" /
+    /fim/ /
+
+Comparacoes:  ==  !=  <  >  <=  >=
+(para comparar use DOIS iguais:  ==  )
+Ligar condicoes:  e   ou   nao
+
+    /se/ vida > 0 e nao pausado /
+
+
+6. REPETICOES (LACOS)
+----------------------
+Repetir um numero de vezes:
+
+    /repetir/ 3 /
+        /criar/ "Oi" /
+    /fim/ /
+
+Contar:
+
+    /para/ i de 1 ate 10 /
+        /criar/ i /
+    /fim/ /
+
+    /para/ i de 10 ate 0 passo -2 /       (de 2 em 2, para tras)
+
+Enquanto for verdade:
+
+    /enquanto/ vida > 0 /
+        /var/ vida -= 1 /
+    /fim/ /
+
+Para cada item de uma lista:
+
+    /paracada/ nome em ["Luigi", "Peach"] /
+        /criar/ "Oi,", nome /
+    /fim/ /
+
+Dentro de qualquer repeticao:
+    /parar/ /          sai da repeticao
+    /continuar/ /      pula para a proxima volta
+
+
+7. LISTAS
+----------
+    /var/ frutas = ["maca", "uva"] /
+    /adicionar/ frutas, "pera" /        coloca no fim
+    /remover/ frutas, 0 /               tira o item numero 0
+    tamanho(frutas)                     quantos itens tem
+    lista(5, 0)                         cria uma lista com 5 zeros
+
+
+8. FUNCOES
+-----------
+    /funcao/ dobro(n) /
+        /retornar/ n * 2 /
+    /fim/ /
+
+    /criar/ dobro(21) /                 mostra 42
+    /var/ x = dobro(5) /
+    /chamar/ desenharInimigo(10, 20) /  usa uma funcao sem guardar resultado
+
+Variaveis criadas dentro de uma funcao ficam so nela.
+Se a variavel ja existe fora, a funcao muda a de fora.
+
+
+9. CLASSES (OBJETOS)
+---------------------
+    /classe/ Jogador(nome, vida) /
+        /var/ este.nome = nome /
+        /var/ este.vida = vida /
+        /funcao/ dano(n) /
+            /var/ este.vida -= n /
+        /fim/ /
+    /fim/ /
+
+    /var/ j = Jogador("Mario", 10) /
+    /chamar/ j.dano(3) /
+    /criar/ j.nome, "tem", j.vida, "de vida" /
+
+"este" e o proprio objeto que esta sendo criado.
+
+
+10. CONTAS E FUNCOES PRONTAS
+-----------------------------
+    aleatorio(1, 6)        numero inteiro sorteado de 1 a 6
+    aleatorio(10)          sorteia de 0 a 9
+    piso(3.7)  = 3         arredonda para baixo
+    teto(3.2)  = 4         arredonda para cima
+    arredondar(3.5) = 4
+    raiz(16)   = 4
+    potencia(2, 3) = 8
+    abs(-5)    = 5
+    minimo(3, 7)   maximo(3, 7)
+    seno(90)  cosseno(0)  tangente(45)     (usam GRAUS)
+    pi
+    texto(10)      vira texto       numero("10")   vira numero
+    tamanho(x)     tamanho de texto ou lista
+    agora()        hora atual em milissegundos
+    largura  altura          tamanho da tela em pixels
+
+
+11. DESENHAR NA TELA
+---------------------
+A tela comeca BRANCA e vazia. So aparece o que voce mandar.
+Canto superior esquerdo = (0, 0). x vai para a direita, y para baixo.
+
+    /fundo/ "black" /                    cor de fundo
+    /fundo/ "ceu.png" /                  imagem de fundo
+    /cor/ "red" /                        cor para os proximos desenhos
+    /cor/ "#ff8800" /                    cor em hexadecimal
+    /cor/ 255, 0, 0 /                    cor em vermelho, verde, azul
+    /retangulo/ x, y, largura, altura /
+    /circulo/ x, y, raio /
+    /linha/ x1, y1, x2, y2 /
+    /espessura/ 4 /                      espessura das linhas
+    /escrever/ "Texto", x, y, tamanho /
+    /imagem/ "mario.png", x, y, largura, altura /
+    /som/ "musica.mp3" /
+    /titulo/ "Meu jogo" /
+    /limpar/ /                           apaga tudo (volta ao fundo)
+
+Imagens e sons: coloque o arquivo na MESMA PASTA do .luigi
+e use so o nome ("mario.png"). Tambem aceita links https://
+
+
+12. JOGOS: O LACO /sempre/
+---------------------------
+Tudo dentro de /sempre/ roda 60 vezes por segundo.
+A tela e limpa sozinha a cada volta, entao voce desenha tudo de novo.
+
+    /var/ x = 100 /
+    /sempre/ /
+        /se/ tecla("direita") /
+            /var/ x += 300 * dt /
+        /fim/ /
+        /cor/ "red" /
+        /retangulo/ x, 100, 50, 50 /
+    /fim/ /
+
+"dt" e o tempo da volta anterior (em segundos). Multiplique a
+velocidade por dt para o movimento ficar igual em qualquer
+computador:   x += velocidade * dt
+
+Quer desenhar sem apagar (tipo um quadro de pintura)?
+    /persistir/ /
+
+TECLADO
+    tecla("w")       verdadeiro enquanto a tecla esta segurada
+    apertou("espaco")   verdadeiro so na volta em que apertou
+
+    nomes: letras (a ... z), numeros ("1"), espaco, cima, baixo,
+           esquerda, direita, shift, ctrl, enter, esc, tab
+
+MOUSE
+    mouseX, mouseY          posicao do mouse na tela
+    clicando                botao esquerdo segurado
+    clicandoDireito         botao direito segurado
+    clicouEsq, clicouDir    so na volta em que clicou
+    mouseDX, mouseDY        quanto o mouse se mexeu nessa volta
+    rodinha                 -1 (para cima), 1 (para baixo) ou 0
+
+
+13. MUNDO 3D DE BLOCOS (ESTILO MINECRAFT)
+------------------------------------------
+O mundo e uma grade de blocos:
+    x: 0 a 127    y (altura): 0 a 63    z: 0 a 127
+Cada bloco tem uma cor. O resto e "ar" (vazio).
+
+    /bloco/ 10, 3, 10, "red" /           poe um bloco vermelho
+    /bloco/ 10, 3, 10, "ar" /            tira o bloco
+    /preencher/ 0,0,0, 20,2,20, "#4caf50" /   enche uma caixa de blocos
+    bloco(10, 3, 10)                     (como funcao) diz a cor do bloco
+                                         ou "ar"
+
+    /ceu/ "#87ceeb" /                    cor do ceu
+    /camera/ x, y, z, giro, inclinacao / onde esta o olho e para onde olha
+                                         (giro e inclinacao em graus)
+    /desenhar3d/ /                       desenha o mundo na tela
+
+    olhar()       devolve o bloco que esta na mira (ate 6 blocos):
+        alvo = olhar()
+        alvo.achou            verdadeiro se tem bloco na mira
+        alvo.x, alvo.y, alvo.z       o bloco mirado
+        alvo.ax, alvo.ay, alvo.az    o espaco vazio colado nele
+
+        /var/ alvo = olhar() /
+        /se/ alvo.achou e clicouEsq /
+            /bloco/ alvo.x, alvo.y, alvo.z, "ar" /          quebra
+        /fim/ /
+        /se/ alvo.achou e clicouDir /
+            /bloco/ alvo.ax, alvo.ay, alvo.az, "gray" /     coloca
+        /fim/ /
+
+Ajustes:
+    /resolucao/ 4 /      menor = mais bonito, mais pesado (padrao 5)
+    /campo/ 70 /         abertura da visao em graus
+    /distancia/ 48 /     ate onde enxerga
+
+Girar a camera com o mouse (o primeiro clique trava o mouse):
+    /var/ giro += mouseDX * 0.15 /
+    /var/ inc = maximo(-89, minimo(89, inc - mouseDY * 0.15)) /
+
+Andar para onde esta olhando:
+    frente:   x += seno(giro) * vel     z += cosseno(giro) * vel
+
+Veja o arquivo minecraft.luigi: e um jogo completo com terreno,
+arvores, pulo, gravidade, quebrar e colocar blocos.
+
+
+14. EXEMPLOS PRONTOS PARA COPIAR
+----------------------------------
+
+--- Contagem e condicao ---
+    /var/ idade = 0 /
+    /ler/ idade, "Quantos anos voce tem?" /
+    /se/ idade >= 18 /
+        /criar/ "Maior de idade" /
+    /senao/ /
+        /criar/ "Menor de idade" /
+    /fim/ /
+
+--- Quadrado que anda com as setas ---
+    /var/ x = 100 /
+    /var/ y = 100 /
+    /sempre/ /
+        /se/ tecla("direita") /
+            /var/ x += 300 * dt /
+        /fim/ /
+        /se/ tecla("esquerda") /
+            /var/ x -= 300 * dt /
+        /fim/ /
+        /cor/ "red" /
+        /retangulo/ x, y, 50, 50 /
+    /fim/ /
+
+--- Camera girando em volta de um bloco ---
+    /ceu/ "#87ceeb" /
+    /preencher/ 0, 0, 0, 20, 2, 20, "#4caf50" /
+    /bloco/ 10, 3, 10, "red" /
+    /var/ giro = 0 /
+    /sempre/ /
+        /var/ giro += 30 * dt /
+        /camera/ 10 + seno(giro) * 8, 6, 10 + cosseno(giro) * 8, giro + 180, -25 /
+        /desenhar3d/ /
+    /fim/ /
+
+
+15. ERROS COMUNS
+------------------
+- "linha invalida": faltou a / no final da linha, ou faltou
+  uma das duas barras do comando.
+- "falta /fim/": algum /se/, /enquanto/, /para/, /funcao/ etc.
+  ficou sem o seu /fim/ /.
+- "a variavel X nao existe": voce usou X antes de criar com /var/.
+- Condicao que nunca da certo: voce usou um = no lugar de ==.
+- "o programa demorou demais": um /enquanto/ que nunca termina.
+  (Dentro de /sempre/ isso nao precisa de /enquanto/.)
+- Nome de variavel e, ou, nao: sao palavras reservadas.
+- A tela fica branca: o programa nao desenhou nada, ou deu erro
+  logo no inicio. Confira se tem /cor/ antes de desenhar
+  (a cor padrao e preto) e se o fundo nao esta da mesma cor.
+
+
+16. RESUMO DOS COMANDOS
+-------------------------
+Texto:      criar  limpartexto  ler
+Variaveis:  var  adicionar  remover
+Decisao:    se  senaose  senao  fim
+Repetir:    repetir  para  paracada  enquanto  parar  continuar
+Funcoes:    funcao  classe  retornar  chamar
+Jogo:       sempre  persistir
+Desenho:    fundo  cor  espessura  limpar  retangulo  circulo
+            linha  escrever  imagem  som  titulo
+3D:         ceu  resolucao  campo  distancia  bloco  preencher
+            camera  desenhar3d
+
+Limites: a Luigi e uma linguagem simples; nao tem tudo que o Java
+tem, mas tem o suficiente para fazer programas, jogos 2D e um
+mundo de blocos como o Minecraft.
